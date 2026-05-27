@@ -3,6 +3,9 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const connectDB = require('./config/dbConnection');
 const authRoutes = require('./routes/authenticationRoutes');
+const productRoutes = require('./routes/productRoutes');
+const orderRoutes = require('./routes/orderRoutes');
+const analyticsRoutes = require('./routes/analyticsRoutes');
 const { notFound, errorHandler } = require('./middleware/errorHandler');
 
 // Load env vars
@@ -19,6 +22,9 @@ app.use(cors());
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/products', productRoutes);
+app.use('/api/orders', orderRoutes);
+app.use('/api/analytics', analyticsRoutes);
 
 app.get('/', (req, res) => {
   res.send('E-commerce Backend API is running...');
