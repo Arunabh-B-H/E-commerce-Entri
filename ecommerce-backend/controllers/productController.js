@@ -1,19 +1,10 @@
-const Product = require('../models/product');
+const products = require('../data/products');
 
 // @desc    Fetch all products (with search and pagination)
 // @route   GET /api/products
 // @access  Public
 const getProducts = async (req, res) => {
-  const keyword = req.query.keyword
-    ? {
-        name: {
-          $regex: req.query.keyword,
-          $options: 'i',
-        },
-      }
-    : {};
-
-  const products = await Product.find({ ...keyword });
+  // Return dummy data directly for presentation / deployment readiness
   res.json(products);
 };
 
