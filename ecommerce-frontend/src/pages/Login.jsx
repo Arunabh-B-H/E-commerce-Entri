@@ -14,6 +14,13 @@ const Login = () => {
   
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { userInfo } = useSelector((state) => state.auth);
+
+  React.useEffect(() => {
+    if (userInfo) {
+      navigate('/');
+    }
+  }, [navigate, userInfo]);
 
   const handleGoogleSuccess = async (credentialResponse) => {
     try {
