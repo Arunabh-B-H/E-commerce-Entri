@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart } from '../redux/slices/cartSlice';
 import API from '../api/axiosInstance';
 import { motion } from 'framer-motion';
 import { FaStar, FaShoppingCart } from 'react-icons/fa';
@@ -10,6 +12,19 @@ const Home = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const categoryFilter = searchParams.get('category');
+  
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { userInfo } = useSelector((state) => state.auth);
+
+  const addToCartHandler = (product) => {
+    if (!userInfo) {
+      navigate('/register');
+      return;
+    }
+    dispatch(addToCart({ ...product, qty: 1 }));
+    navigate('/cart');
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -115,6 +130,7 @@ const Home = () => {
                 <span className="text-xl font-black text-white">₹{product.price.toLocaleString('en-IN')}</span>
                 <motion.button 
                   whileTap={{ scale: 0.95 }}
+                  onClick={() => addToCartHandler(product)}
                   className="bg-black text-white p-3 rounded-full hover:bg-gold-500 transition-colors shadow-md"
                   title="Add to cart"
                 >

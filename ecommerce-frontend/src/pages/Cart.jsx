@@ -18,9 +18,13 @@ const Cart = () => {
   const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id));
   };
-
+  const auth = useSelector((state) => state.auth);
   const checkoutHandler = () => {
-    navigate('/shipping');
+    if (!auth?.userInfo) {
+      navigate('/register');
+    } else {
+      navigate('/shipping');
+    }
   };
 
   return (

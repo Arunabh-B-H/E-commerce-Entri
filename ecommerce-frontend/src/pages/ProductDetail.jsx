@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import API from '../api/axiosInstance';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../redux/slices/cartSlice';
 import { FaStar, FaArrowLeft, FaShoppingCart } from 'react-icons/fa';
 import { motion } from 'framer-motion';
@@ -14,6 +14,7 @@ const ProductDetail = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { userInfo } = useSelector((state) => state.auth);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -31,6 +32,10 @@ const ProductDetail = () => {
   }, [id]);
 
   const addToCartHandler = () => {
+    if (!userInfo) {
+      navigate('/register');
+      return;
+    }
     dispatch(addToCart({ ...product, qty }));
     navigate('/cart');
   };
