@@ -34,7 +34,7 @@ const PageTransition = ({ children }) => {
 
 function AppContent() {
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col font-sans text-gray-900">
+    <div className="min-h-screen bg-dark-800 flex flex-col font-sans text-white">
       <Navbar />
       <main className="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <PageTransition>

@@ -48,7 +48,7 @@ const Home = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gold-500"></div>
       </div>
     );
   }
@@ -61,10 +61,10 @@ const Home = () => {
         transition={{ duration: 0.6 }}
         className="mb-8 text-center sm:text-left"
       >
-        <h2 className="text-3xl font-black text-gray-900 tracking-tight">
+        <h2 className="text-3xl font-black text-white tracking-tight">
           {categoryFilter ? `${categoryFilter}` : 'Featured Products'}
         </h2>
-        <Link to="/" className="text-blue-600 font-bold hover:underline">
+        <Link to="/" className="text-gold-500 font-bold hover:underline">
           {categoryFilter ? 'Clear Filter' : 'View All'}
         </Link>
       </motion.div>
@@ -80,9 +80,9 @@ const Home = () => {
             key={index}
             variants={itemVariants}
             whileHover={{ y: -5 }}
-            className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col"
+            className="bg-dark-900 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-dark-700 flex flex-col"
           >
-            <Link to={`/product/${product._id || product.id}`} className="h-56 bg-gray-50 flex items-center justify-center p-4 overflow-hidden group">
+            <Link to={`/product/${product._id || product.id}`} className="h-56 bg-dark-800 flex items-center justify-center p-4 overflow-hidden group">
               <motion.img 
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.4 }}
@@ -93,11 +93,11 @@ const Home = () => {
             </Link>
             
             <div className="p-5 flex flex-col flex-grow">
-              <div className="text-xs text-blue-600 font-semibold uppercase tracking-wider mb-2">
+              <div className="text-xs text-gold-500 font-semibold uppercase tracking-wider mb-2">
                 {product.brand}
               </div>
               <Link to={`/product/${product._id || product.id}`}>
-                <h3 className="font-bold text-gray-800 text-lg leading-tight mb-2 line-clamp-2 hover:text-blue-600 transition">
+                <h3 className="font-bold text-gray-100 text-lg leading-tight mb-2 line-clamp-2 hover:text-gold-500 transition">
                   {product.name}
                 </h3>
               </Link>
@@ -112,10 +112,10 @@ const Home = () => {
               </div>
               
               <div className="mt-auto flex items-center justify-between">
-                <span className="text-xl font-black text-gray-900">₹{product.price.toLocaleString('en-IN')}</span>
+                <span className="text-xl font-black text-white">₹{product.price.toLocaleString('en-IN')}</span>
                 <motion.button 
                   whileTap={{ scale: 0.95 }}
-                  className="bg-gray-900 text-white p-3 rounded-full hover:bg-blue-600 transition-colors shadow-md"
+                  className="bg-black text-white p-3 rounded-full hover:bg-gold-500 transition-colors shadow-md"
                   title="Add to cart"
                 >
                   <FaShoppingCart />

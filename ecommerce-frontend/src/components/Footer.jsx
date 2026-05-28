@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-gray-300 py-16 border-t border-gray-800">
+    <footer className="bg-black text-gray-300 py-16 border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           
           {/* Brand & Intro */}
           <div className="lg:col-span-2">
             <Link to="/" className="text-2xl font-black tracking-tighter text-white flex items-center gap-2 mb-6">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white text-xl">
+              <div className="w-8 h-8 bg-gold-500 rounded-lg flex items-center justify-center text-white text-xl">
                 T
               </div>
               TECHSTORE.
@@ -20,7 +20,7 @@ const Footer = () => {
               Your ultimate destination for premium electronics and professional gear. We curate the best technology to elevate your digital lifestyle.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 hover:text-white transition">
+              <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gold-500 hover:text-white transition">
                 <FaFacebookF />
               </a>
               <a href="#" className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-400 hover:text-white transition">
@@ -73,7 +73,7 @@ const Footer = () => {
 
         </div>
 
-        <div className="mt-16 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+        <div className="mt-16 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400">
           <p>&copy; {new Date().getFullYear()} TechStore. All rights reserved.</p>
           <div className="mt-4 md:mt-0 flex space-x-6">
             <span className="flex items-center gap-1">Secure payments via Stripe</span>

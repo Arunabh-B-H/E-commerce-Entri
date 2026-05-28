@@ -62,17 +62,17 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center -mx-4 sm:-mx-6 lg:-mx-8 -my-8 bg-white">
-      <div className="flex w-full max-w-6xl h-[80vh] bg-white overflow-hidden">
+    <div className="min-h-[80vh] flex items-center justify-center -mx-4 sm:-mx-6 lg:-mx-8 -my-8 bg-dark-900">
+      <div className="flex w-full max-w-6xl h-[80vh] bg-dark-900 overflow-hidden">
         
         {/* Left Side: Form */}
         <div className="w-full lg:w-1/2 flex flex-col justify-center px-8 sm:px-16 lg:px-24">
           <div className="max-w-md w-full mx-auto">
-            <h2 className="text-4xl font-black text-gray-900 tracking-tight mb-2">Welcome Back</h2>
-            <p className="text-gray-500 mb-8">Enter your details to access your account.</p>
+            <h2 className="text-4xl font-black text-white tracking-tight mb-2">Welcome Back</h2>
+            <p className="text-gray-400 mb-8">Enter your details to access your account.</p>
 
             {error && (
-              <div className="bg-red-50 border-l-4 border-red-500 text-red-700 p-4 mb-6 text-sm rounded-r">
+              <div className="bg-dark-800 border-l-4 border-red-500 text-red-700 p-4 mb-6 text-sm rounded-r">
                 {error}
               </div>
             )}
@@ -93,7 +93,7 @@ const Login = () => {
                   <button 
                     onClick={handleMockGoogleLogin}
                     type="button"
-                    className="w-full flex items-center justify-center gap-3 bg-white border border-gray-300 text-gray-700 py-2.5 rounded-lg hover:bg-gray-50 transition font-medium shadow-sm"
+                    className="w-full flex items-center justify-center gap-3 bg-dark-900 border border-gray-300 text-gray-300 py-2.5 rounded-lg hover:bg-dark-800 transition font-medium shadow-sm"
                   >
                     <svg className="w-5 h-5" viewBox="0 0 24 24">
                       <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -108,14 +108,14 @@ const Login = () => {
             </div>
 
             <div className="relative flex items-center justify-center mb-6">
-              <div className="border-t border-gray-200 w-full"></div>
-              <span className="bg-white px-4 text-xs text-gray-400 font-medium uppercase tracking-wider">or sign in with email</span>
-              <div className="border-t border-gray-200 w-full"></div>
+              <div className="border-t border-dark-700 w-full"></div>
+              <span className="bg-dark-900 px-4 text-xs text-gray-400 font-medium uppercase tracking-wider">or sign in with email</span>
+              <div className="border-t border-dark-700 w-full"></div>
             </div>
 
             <form onSubmit={submitHandler} className="space-y-5">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <label className="block text-sm font-medium text-gray-300 mb-1">Email</label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
                     <FaEnvelope />
@@ -124,7 +124,7 @@ const Login = () => {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition text-sm bg-gray-50 focus:bg-white"
+                    className="block w-full pl-10 pr-3 py-3 border border-dark-700 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent transition text-sm bg-dark-800 focus:bg-dark-900"
                     placeholder="you@example.com"
                     required
                   />
@@ -133,8 +133,8 @@ const Login = () => {
               
               <div>
                 <div className="flex justify-between items-center mb-1">
-                  <label className="block text-sm font-medium text-gray-700">Password</label>
-                  <a href="#" className="text-xs text-blue-600 hover:text-blue-500 font-medium">Forgot password?</a>
+                  <label className="block text-sm font-medium text-gray-300">Password</label>
+                  <a href="#" className="text-xs text-gold-500 hover:text-blue-500 font-medium">Forgot password?</a>
                 </div>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400">
@@ -144,7 +144,7 @@ const Login = () => {
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="block w-full pl-10 pr-3 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent transition text-sm bg-gray-50 focus:bg-white"
+                    className="block w-full pl-10 pr-3 py-3 border border-dark-700 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent transition text-sm bg-dark-800 focus:bg-dark-900"
                     placeholder="••••••••"
                     required
                   />
@@ -154,16 +154,16 @@ const Login = () => {
               <button 
                 type="submit" 
                 disabled={loading}
-                className="w-full flex items-center justify-center gap-2 bg-gray-900 text-white py-3 rounded-lg hover:bg-blue-600 transition font-medium tracking-wide shadow-md disabled:opacity-70"
+                className="w-full flex items-center justify-center gap-2 bg-black text-white py-3 rounded-lg hover:bg-gold-500 transition font-medium tracking-wide shadow-md disabled:opacity-70"
               >
                 {loading ? 'Signing in...' : 'Sign In'} 
                 {!loading && <FaArrowRight className="text-sm" />}
               </button>
             </form>
 
-            <p className="mt-8 text-center text-sm text-gray-600">
+            <p className="mt-8 text-center text-sm text-gray-400">
               Don't have an account?{' '}
-              <Link to="/register" className="text-blue-600 font-bold hover:underline">
+              <Link to="/register" className="text-gold-500 font-bold hover:underline">
                 Create one now
               </Link>
             </p>
@@ -171,7 +171,7 @@ const Login = () => {
         </div>
 
         {/* Right Side: Image */}
-        <div className="hidden lg:block w-1/2 relative bg-gray-100">
+        <div className="hidden lg:block w-1/2 relative bg-dark-700">
           <img 
             src="/images/login_lifestyle.png" 
             alt="Workspace" 
