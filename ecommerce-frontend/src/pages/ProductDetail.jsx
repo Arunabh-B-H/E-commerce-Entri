@@ -4,6 +4,7 @@ import API from '../api/axiosInstance';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../redux/slices/cartSlice';
 import { FaStar, FaArrowLeft, FaShoppingCart } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -40,7 +41,12 @@ const ProductDetail = () => {
   );
 
   return (
-    <div className="max-w-7xl mx-auto py-8">
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      className="max-w-7xl mx-auto py-8"
+    >
       <Link to="/" className="inline-flex items-center gap-2 text-gray-600 hover:text-blue-600 font-medium mb-8 transition">
         <FaArrowLeft /> Back to Products
       </Link>
@@ -48,9 +54,14 @@ const ProductDetail = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12">
         
         {/* Product Image */}
-        <div className="lg:col-span-5 bg-white p-8 rounded-2xl border border-gray-100 flex items-center justify-center">
+        <motion.div 
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="lg:col-span-5 bg-white p-8 rounded-2xl border border-gray-100 flex items-center justify-center shadow-sm"
+        >
           <img src={product.image} alt={product.name} className="w-full h-auto object-contain max-h-[500px]" />
-        </div>
+        </motion.div>
 
         {/* Product Info */}
         <div className="lg:col-span-4 flex flex-col justify-center">
@@ -78,7 +89,7 @@ const ProductDetail = () => {
           <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm sticky top-24">
             <div className="flex justify-between items-center mb-6 pb-6 border-b border-gray-100">
               <span className="text-gray-500 font-medium">Price</span>
-              <span className="text-3xl font-black text-gray-900">${product.price}</span>
+              <span className="text-3xl font-black text-gray-900">₹{product.price?.toLocaleString('en-IN')}</span>
             </div>
             
             <div className="flex justify-between items-center mb-6 pb-6 border-b border-gray-100">
@@ -116,7 +127,7 @@ const ProductDetail = () => {
         </div>
 
       </div>
-    </div>
+    </motion.div>
   );
 };
 

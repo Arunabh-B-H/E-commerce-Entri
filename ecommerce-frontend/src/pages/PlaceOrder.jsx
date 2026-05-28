@@ -101,7 +101,7 @@ const PlaceOrder = () => {
                       {item.name}
                     </Link>
                     <div className="font-medium text-gray-600">
-                      {item.qty} x ${item.price} = <span className="font-bold text-gray-900">${(item.qty * item.price).toFixed(2)}</span>
+                      {item.qty} x ₹{item.price.toLocaleString('en-IN')} = <span className="font-bold text-gray-900">₹{(item.qty * item.price).toLocaleString('en-IN')}</span>
                     </div>
                   </li>
                 ))}
@@ -116,19 +116,19 @@ const PlaceOrder = () => {
             
             <div className="flex justify-between items-center mb-4 text-gray-600">
               <span>Items</span>
-              <span className="font-medium">${cart.itemsPrice}</span>
+              <span className="font-medium">₹{Number(cart.itemsPrice).toLocaleString('en-IN')}</span>
             </div>
             <div className="flex justify-between items-center mb-4 text-gray-600">
               <span>Shipping</span>
-              <span className="font-medium">{cart.shippingPrice === '0.00' ? 'Free' : `$${cart.shippingPrice}`}</span>
+              <span className="font-medium">{cart.shippingPrice === '0.00' ? 'Free' : `₹${cart.shippingPrice}`}</span>
             </div>
             <div className="flex justify-between items-center mb-6 text-gray-600 pb-6 border-b border-gray-100">
               <span>Tax</span>
-              <span className="font-medium">${cart.taxPrice}</span>
+              <span className="font-medium">₹{Number(cart.taxPrice).toLocaleString('en-IN')}</span>
             </div>
             <div className="flex justify-between items-center mb-8">
               <span className="text-lg font-bold text-gray-900">Total</span>
-              <span className="text-2xl font-black text-blue-600">${cart.totalPrice}</span>
+              <span className="text-2xl font-black text-blue-600">₹{Number(cart.totalPrice).toLocaleString('en-IN')}</span>
             </div>
 
             {error && <div className="bg-red-50 text-red-600 p-4 rounded-lg mb-6 text-sm font-medium">{error}</div>}

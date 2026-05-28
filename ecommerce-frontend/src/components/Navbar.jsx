@@ -120,12 +120,12 @@ const Navbar = () => {
       <div className="hidden md:block bg-gray-50 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ul className="flex space-x-8 text-sm font-medium text-gray-600 py-3">
-            <li className="hover:text-blue-600 cursor-pointer transition">All Categories</li>
-            <li className="hover:text-blue-600 cursor-pointer transition">Laptops & PCs</li>
-            <li className="hover:text-blue-600 cursor-pointer transition">Smartphones</li>
-            <li className="hover:text-blue-600 cursor-pointer transition">Audio & Headphones</li>
-            <li className="hover:text-blue-600 cursor-pointer transition">Gaming</li>
-            <li className="hover:text-blue-600 cursor-pointer transition">Accessories</li>
+            <li><Link to="/" className="hover:text-blue-600 transition">All Categories</Link></li>
+            <li><Link to="/?category=Laptops & PCs" className="hover:text-blue-600 transition">Laptops & PCs</Link></li>
+            <li><Link to="/?category=Smartphones" className="hover:text-blue-600 transition">Smartphones</Link></li>
+            <li><Link to="/?category=Audio & Headphones" className="hover:text-blue-600 transition">Audio & Headphones</Link></li>
+            <li><Link to="/?category=Gaming" className="hover:text-blue-600 transition">Gaming</Link></li>
+            <li><Link to="/?category=Accessories" className="hover:text-blue-600 transition">Accessories</Link></li>
           </ul>
         </div>
       </div>

@@ -86,7 +86,7 @@ const Order = () => {
                     {item.name}
                   </Link>
                   <div className="font-medium text-gray-600">
-                    {item.qty} x ${item.price} = <span className="font-bold text-gray-900">${(item.qty * item.price).toFixed(2)}</span>
+                    {item.qty} x ₹{item.price.toLocaleString('en-IN')} = <span className="font-bold text-gray-900">₹{(item.qty * item.price).toLocaleString('en-IN')}</span>
                   </div>
                 </li>
               ))}
@@ -101,19 +101,19 @@ const Order = () => {
             
             <div className="flex justify-between items-center mb-4 text-gray-600">
               <span>Items</span>
-              <span className="font-medium">${order.itemsPrice?.toFixed(2)}</span>
+              <span className="font-medium">₹{Number(order.itemsPrice).toLocaleString('en-IN')}</span>
             </div>
             <div className="flex justify-between items-center mb-4 text-gray-600">
               <span>Shipping</span>
-              <span className="font-medium">${order.shippingPrice?.toFixed(2)}</span>
+              <span className="font-medium">₹{Number(order.shippingPrice).toLocaleString('en-IN')}</span>
             </div>
             <div className="flex justify-between items-center mb-6 text-gray-600 pb-6 border-b border-gray-100">
               <span>Tax</span>
-              <span className="font-medium">${order.taxPrice?.toFixed(2)}</span>
+              <span className="font-medium">₹{Number(order.taxPrice).toLocaleString('en-IN')}</span>
             </div>
             <div className="flex justify-between items-center mb-8">
               <span className="text-lg font-bold text-gray-900">Total</span>
-              <span className="text-2xl font-black text-blue-600">${order.totalPrice?.toFixed(2)}</span>
+              <span className="text-2xl font-black text-blue-600">₹{Number(order.totalPrice).toLocaleString('en-IN')}</span>
             </div>
 
             {!order.isPaid && (

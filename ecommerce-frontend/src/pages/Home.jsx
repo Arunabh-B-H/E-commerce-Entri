@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import API from '../api/axiosInstance';
 import { motion } from 'framer-motion';
 import { FaStar, FaShoppingCart } from 'react-icons/fa';
@@ -7,12 +7,19 @@ import { FaStar, FaShoppingCart } from 'react-icons/fa';
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const categoryFilter = searchParams.get('category');
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const { data } = await API.get('/products');
-        setProducts(data);
+        if (categoryFilter) {
+          setProducts(data.filter(p => p.category === categoryFilter));
+        } else {
+          setProducts(data);
+        }
       } catch (error) {
         console.error('Failed to fetch products', error);
       } finally {
@@ -21,7 +28,7 @@ const Home = () => {
     };
 
     fetchProducts();
-  }, []);
+  }, [categoryFilter]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -54,8 +61,12 @@ const Home = () => {
         transition={{ duration: 0.6 }}
         className="mb-8 text-center sm:text-left"
       >
-        <h2 className="text-3xl font-bold text-gray-800 tracking-tight">Featured Collection</h2>
-        <p className="text-gray-500 mt-2">Discover our premium range of electronics and accessories.</p>
+        <h2 className="text-3xl font-black text-gray-900 tracking-tight">
+          {categoryFilter ? `${categoryFilter}` : 'Featured Products'}
+        </h2>
+        <Link to="/" className="text-blue-600 font-bold hover:underline">
+          {categoryFilter ? 'Clear Filter' : 'View All'}
+        </Link>
       </motion.div>
       
       <motion.div 
@@ -101,7 +112,7 @@ const Home = () => {
               </div>
               
               <div className="mt-auto flex items-center justify-between">
-                <span className="text-xl font-extrabold text-gray-900">${product.price}</span>
+                <span className="text-xl font-black text-gray-900">₹{product.price.toLocaleString('en-IN')}</span>
                 <motion.button 
                   whileTap={{ scale: 0.95 }}
                   className="bg-gray-900 text-white p-3 rounded-full hover:bg-blue-600 transition-colors shadow-md"
