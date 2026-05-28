@@ -88,7 +88,7 @@ const Home = () => {
                 transition={{ duration: 0.4 }}
                 src={product.image} 
                 alt={product.name} 
-                className="max-h-full object-contain mix-blend-multiply" 
+                className="max-h-full object-contain brightness-110 drop-shadow-2xl" 
               />
             </Link>
             

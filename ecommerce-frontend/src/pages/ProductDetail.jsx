@@ -16,6 +16,7 @@ const ProductDetail = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const fetchProduct = async () => {
       try {
         const { data } = await API.get(`/products/${id}`);
@@ -41,12 +42,7 @@ const ProductDetail = () => {
   );
 
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      className="max-w-7xl mx-auto py-8"
-    >
+    <div className="max-w-7xl mx-auto py-8">
       <Link to="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-gold-500 font-medium mb-8 transition">
         <FaArrowLeft /> Back to Products
       </Link>
@@ -127,7 +123,7 @@ const ProductDetail = () => {
         </div>
 
       </div>
-    </motion.div>
+    </div>
   );
 };
 
