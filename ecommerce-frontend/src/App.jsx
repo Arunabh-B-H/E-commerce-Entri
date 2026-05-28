@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
@@ -6,6 +6,13 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
+
+const ProductDetail = lazy(() => import('./pages/ProductDetail'));
+const Cart = lazy(() => import('./pages/Cart'));
+const Shipping = lazy(() => import('./pages/Shipping'));
+const PaymentMethod = lazy(() => import('./pages/PaymentMethod'));
+const PlaceOrder = lazy(() => import('./pages/PlaceOrder'));
+const Order = lazy(() => import('./pages/Order'));
 
 const PageTransition = ({ children }) => {
   const location = useLocation();
@@ -33,8 +40,38 @@ function AppContent() {
         <PageTransition>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/product/:id" element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <ProductDetail />
+            </Suspense>
+          } />
+          <Route path="/cart" element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Cart />
+            </Suspense>
+          } />
+          <Route path="/shipping" element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Shipping />
+            </Suspense>
+          } />
+          <Route path="/payment" element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <PaymentMethod />
+            </Suspense>
+          } />
+          <Route path="/placeorder" element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <PlaceOrder />
+            </Suspense>
+          } />
+          <Route path="/order/:id" element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <Order />
+            </Suspense>
+          } />
           </Routes>
         </PageTransition>
       </main>

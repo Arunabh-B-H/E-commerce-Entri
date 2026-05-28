@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import API from '../api/axiosInstance';
 import { motion } from 'framer-motion';
 import { FaStar, FaShoppingCart } from 'react-icons/fa';
@@ -70,7 +71,7 @@ const Home = () => {
             whileHover={{ y: -5 }}
             className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col"
           >
-            <div className="h-56 bg-gray-50 flex items-center justify-center p-4 overflow-hidden group">
+            <Link to={`/product/${product._id || product.id}`} className="h-56 bg-gray-50 flex items-center justify-center p-4 overflow-hidden group">
               <motion.img 
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.4 }}
@@ -78,15 +79,17 @@ const Home = () => {
                 alt={product.name} 
                 className="max-h-full object-contain mix-blend-multiply" 
               />
-            </div>
+            </Link>
             
             <div className="p-5 flex flex-col flex-grow">
               <div className="text-xs text-blue-600 font-semibold uppercase tracking-wider mb-2">
                 {product.brand}
               </div>
-              <h3 className="font-bold text-gray-800 text-lg leading-tight mb-2 line-clamp-2">
-                {product.name}
-              </h3>
+              <Link to={`/product/${product._id || product.id}`}>
+                <h3 className="font-bold text-gray-800 text-lg leading-tight mb-2 line-clamp-2 hover:text-blue-600 transition">
+                  {product.name}
+                </h3>
+              </Link>
               
               <div className="flex items-center mb-4">
                 <div className="flex text-yellow-400 text-sm">

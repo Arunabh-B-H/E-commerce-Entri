@@ -7,6 +7,7 @@ import { logout } from '../redux/slices/authSlice';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { userInfo } = useSelector((state) => state.auth);
+  const { cartItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -60,7 +61,11 @@ const Navbar = () => {
             <Link to="/cart" className="relative text-gray-600 hover:text-blue-600 transition flex flex-col items-center group">
               <FaShoppingCart className="text-xl mb-1 group-hover:scale-110 transition-transform" />
               <span className="text-[10px] uppercase font-bold tracking-widest">Cart</span>
-              <span className="absolute -top-2 -right-2 bg-blue-600 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+              {cartItems.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-blue-600 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
+                  {cartItems.reduce((acc, item) => acc + item.qty, 0)}
+                </span>
+              )}
             </Link>
 
             {userInfo ? (
@@ -146,7 +151,11 @@ const Navbar = () => {
             <div className="border-t border-gray-100 pt-2">
               <Link to="/cart" onClick={() => setIsOpen(false)} className="block px-2 py-2 text-gray-700 font-medium flex items-center justify-between">
                 Cart
-                <span className="bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded-full">0</span>
+                {cartItems.length > 0 && (
+                  <span className="bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded-full">
+                    {cartItems.reduce((acc, item) => acc + item.qty, 0)}
+                  </span>
+                )}
               </Link>
             </div>
           </div>
